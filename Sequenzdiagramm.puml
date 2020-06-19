@@ -1,0 +1,21 @@
+@startuml Sequenzdiagramm
+actor "user"
+
+user -> StudentController :Erstellt einen neune Termin 
+activate StudentController
+
+StudentController -> Termin :Hollt sich Daten aus GUI 
+deactivate StudentController
+activate Termin
+TerminRepository  <- Termin :Speichert neuen Termin 
+deactivate Termin
+user -> StudentController :öffnet Index seite
+activate StudentController
+TerminRepository -> Termin :Hollt Daten aus DB
+StudentController <- Termin :Bringt Daten aus Konstruktor
+StudentController -> user :Bringt Daten zu User
+
+
+
+
+@enduml

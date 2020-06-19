@@ -1,0 +1,38 @@
+@startuml Terminverwaltung
+
+Class Termin{
+    - id : long
+    - datum : String
+    - beschreibung : String
+    - wichtigkeit : String 
+    ~ logger : Logger
+    + Termin(datum : String, beschreibung : String, wichtigkeit: String)
+    + setId(id : long) : void
+    + getId() : long
+    + setDatum(datum : String) : void
+    + getDatum() : String
+    + setBeslchreibung(beschreibung : String) : void
+    + getBeschreibung() : String
+    + setWichtigkeit(wichtigkeit : String) : void
+    + getWichtigkeit() : String
+}
+
+
+Class TerminController{
+    - terminRepository : TerminRepository
+    ~ logger : Logger
+    + TerminController(terminRepository : TerminRepository)
+    + showIndex(model : Model) : String
+    + showError(Model : model) : String
+    + showSignUpForm(termin : Termin) : String
+    + addTermin(termin : Termin, result : BindingResult, model : Model) : String
+    + deleteTermin(id : long, model : Model) : String
+}
+
+Interface TerminRepository extends CrudRepository{}
+
+TerminRepository <|-- Termin : import
+TerminController <|-- Termin : import
+TerminController <|-- TerminRepository : import
+
+@enduml

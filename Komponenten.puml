@@ -1,0 +1,26 @@
+@startuml Komponenten
+
+package "HTML" {
+[create] 
+[index]
+}
+
+
+package "Controller" {
+
+[TerminController] - [Termin]
+
+
+
+
+}
+
+package "Database" {
+[TerminRepository]
+
+}
+
+[create]--> [TerminController] : HTTP
+[index]--> [TerminController] : HTTP
+[Termin] --> TerminRepository
+@enduml

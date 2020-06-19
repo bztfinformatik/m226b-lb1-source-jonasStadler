@@ -1,0 +1,80 @@
+ <!-- Compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+ <!-- Compiled and minified JavaScript -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>NEW</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+    crossorigin="anonymous">
+
+ <!-- Compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+ <!-- Compiled and minified JavaScript -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</head>
+<body>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">LB1 | Jonas Stadler</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/termin/">Termine</a></li>
+            <li><a href="#">Neuer Termin</a></li> 
+          </ul>
+        </div>
+      </nav>
+* Pflichtfeld
+      <form action="#" th:action="@{/termin/add}"
+      th:object="${termin}" method="post">
+      <div class="row">
+          <div class="form-group col-md-8 ">
+              <label for="datum" class="col-form-label">Datum*</label> <input
+                  type="text" th:field="*{datum}" class="form-control" id="datum"
+                  placeholder="Datum dd-mm-yyyy"> <span
+                  th:if="${#fields.hasErrors('datum')}" th:errors="*{datum}"
+                  class="text-danger"></span>
+          </div>
+
+          <div class="form-group col-md-8">
+            <label for="beschreibung" class="col-form-label">Beschreibung*</label> <input
+                type="text" th:field="*{beschreibung}" class="form-control" id="beschreibung"
+                placeholder="Beschreibung"> <span
+                th:if="${#fields.hasErrors('beschreibung')}" th:errors="*{beschreibung}"
+                class="text-danger"></span>
+        </div>
+        
+        <div class="form-group col-md-8">
+            <label for="wichtigkeit" class="col-form-label">Wichtigkeit*</label> <input
+                type="text" th:field="*{wichtigkeit}" class="form-control" id="wichtigkeit"
+                placeholder='Wichtigkeit "Hoch" or "Mittel" or "Niedrig"'> <span
+                th:if="${#fields.hasErrors('wichtigkeit')}" th:errors="*{wichtigkeit}"
+                class="text-danger"></span>
+        </div>
+         
+
+          <div class="col-md-6">
+              <input type="submit" class="btn btn-primary" value="Add Termin">
+          </div>
+
+      </form>
+
+
+
+
+</body>
+</html>
